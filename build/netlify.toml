@@ -1,0 +1,41 @@
+[[redirects]]
+  from = "/troubleshoot/adx"
+  to = "/troubleshoot/adx"
+  status = 301
+  force = false
+  query = {path = ":path"}
+
+[[redirects]]
+  from = "/troubleshoot/ob"
+  to = "/troubleshoot/ob"
+  status = 301
+  force = false
+  query = {path = ":path"}
+
+[[redirects]]
+  from = "/troubleshoot/ob"
+  to = "/troubleshoot/adx"
+  status = 301
+  force = false
+  query = {path = ":path"}
+
+[[redirects]]
+  from = "/troubleshoot/adx"
+  to = "/troubleshoot/ob"
+  status = 301
+  force = false
+  query = {path = ":path"}
+
+[[redirects]]
+  from = "/troubleshoot/adx"
+  to = "/"
+  status = 301
+  force = false
+  query = {path = ":path"}
+
+[[redirects]]
+  from = "/troubleshoot/ob"
+  to = "/"
+  status = 301
+  force = false
+  query = {path = ":path"}
