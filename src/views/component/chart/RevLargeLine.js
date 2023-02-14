@@ -39,7 +39,6 @@ const RevLargeLine = ({dataIn}) => {
       mode: 'index',
     };
   }, [themeValues]);
-
   const data = React.useMemo(() => {
     return {
       labels: dataIn.map(el => el.Range),
@@ -50,7 +49,9 @@ const RevLargeLine = ({dataIn}) => {
           backgroundColor: `rgba(${themeValues.quaternaryrgb},0.5)`,
           data: dataIn.map((el) => {
             let result = 0;
-            if (Object.keys(el).includes('Winner')) result =  Number((el.Winner[1]/1000 * el.Winner[0]).toFixed(3))
+            if (el.Winner) {
+              result = el.Winner[1].replace('$', "")/1000*el.Winner[0];
+            }
             else result = 0;
             return result;
           }),
