@@ -55,7 +55,7 @@ const AverageCpmLine = (props) => {
     if (tooltip.body) {
       const { dataIndex, datasetIndex } = tooltip.dataPoints[0];
       text = chart.data.labels[dataIndex] + ' | At Reason: ' + props.data.map((el) => el.highest)[dataIndex];
-      value = chart.data.datasets[datasetIndex].data[dataIndex];
+      value = '$' + chart.data.datasets[datasetIndex].data[dataIndex];
       icon = chart.data.datasets[datasetIndex].icons[dataIndex];
       head = chart.data.datasets[datasetIndex].label;
     }

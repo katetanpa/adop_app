@@ -24,9 +24,9 @@ export function getBidChartData (response) {
 export function getCpmLineData (response) {
   let result = response.data.reduce((a, { Range, Reason, CPM }) => {
     let item = a.find(el => el.Range === Range);
-    if(!item) return [...a, {Range, Reason: [Reason], CPM: [CPM] }];
+    if(!item) return [...a, {Range, Reason: [Reason], CPM: [parseFloat(CPM.replace('$', ""))] }];
     item.Reason.push(Reason);
-    item.CPM.push(CPM);
+    item.CPM.push(parseFloat(CPM.replace('$', "")));
     return a;
   },[]).map((el) => {
     let obj = el.Reason.reduce((accumulator, element, index) => {
@@ -72,16 +72,16 @@ export const troubleshootData = (data, code) => {
         const input2 = parse; 
         let logData = {
             totalBid: input2.reduce((acc, el) => (acc += el.Bids), 0),
-            totalAvgCPM: (input2.reduce((acc, el) => (acc += el.CPM), 0) / input2.length).toFixed(3),
+            totalAvgCPM: (input2.reduce((acc, el) => (acc += parseFloat(el.CPM.replace("$", ""))), 0) / input2.length).toFixed(3),
             totalWin: input2.filter((el) => el.Code === 1).reduce((acc, cur) => (acc += cur.Bids), 0),
             totalRev: input2
               .filter((el) => el.Code === 1)
-              .reduce((acc, cur) => (acc += (cur.CPM / 1000) * cur.Bids), 0)
+              .reduce((acc, cur) => (acc += (cur.CPM.replace("$", "") / 1000) * cur.Bids), 0)
               .toFixed(2),
             bidAtPrice: input2.filter((el) => el.Range === info.Floor).reduce((ac, cur) => (ac += cur.Bids), 0),
             revAtPrice: input2
               .filter((el) => el.Range === info.Floor && el.Code === 1)
-              .reduce((acc, cur) => (acc += (cur.CPM / 1000) * cur.Bids), 0),
+              .reduce((acc, cur) => (acc += (cur.CPM.replace("$", "") / 1000) * cur.Bids), 0),
             totalRanges: [...new Set(input2.map((el) => el.Range))].length,
             lowestBid: [...new Set(input2.map((el) => el.Range))][0],
             highestBid: [...new Set(input2.map((el) => el.Range))][[...new Set(input2.map((el) => el.Range))].length - 1],
@@ -105,13 +105,13 @@ export const troubleshootData = (data, code) => {
             }`,
             mostRev: `$${Math.max(
               ...[...new Set(input2.map((el) => el.Range))].map((range) => {
-                return input2.filter((el) => el.Range === range && el.Code === 1).reduce((acc, cur) => (acc += (cur.CPM / 1000) * cur.Bids), 0);
+                return input2.filter((el) => el.Range === range && el.Code === 1).reduce((acc, cur) => (acc += (cur.CPM.replace("$", "") / 1000) * cur.Bids), 0);
               })
             ).toFixed(3)} at: ${
               [...new Set(input2.map((el) => el.Range))][
                 [...new Set(input2.map((el) => el.Range))]
                   .map((range) => {
-                    return input2.filter((el) => el.Range === range && el.Code === 1).reduce((acc, cur) => (acc += (cur.CPM / 1000) * cur.Bids), 0);
+                    return input2.filter((el) => el.Range === range && el.Code === 1).reduce((acc, cur) => (acc += (cur.CPM.replace("$", "") / 1000) * cur.Bids), 0);
                   })
                   .indexOf(
                     Math.max(
@@ -150,18 +150,19 @@ export const troubleshootData = (data, code) => {
     else 
     {
     const input2 = parse.filter((el) => el.ID === code);
+    console.log(input2);
     let logData = {
         totalBid: input2.reduce((acc, el) => (acc += el.Bids), 0),
-        totalAvgCPM: (input2.reduce((acc, el) => (acc += el.CPM), 0) / input2.length).toFixed(3),
+        totalAvgCPM: (input2.reduce((acc, el) => (acc += parseFloat(el.CPM.replace("$", ""))), 0) / input2.length).toFixed(3),
         totalWin: input2.filter((el) => el.Code === 1).reduce((acc, cur) => (acc += cur.Bids), 0),
         totalRev: input2
           .filter((el) => el.Code === 1)
-          .reduce((acc, cur) => (acc += (cur.CPM / 1000) * cur.Bids), 0)
+          .reduce((acc, cur) => (acc += (cur.CPM.replace("$", "") / 1000) * cur.Bids), 0)
           .toFixed(2),
         bidAtPrice: input2.filter((el) => el.Range === info.Floor).reduce((ac, cur) => (ac += cur.Bids), 0),
         revAtPrice: input2
           .filter((el) => el.Range === info.Floor && el.Code === 1)
-          .reduce((acc, cur) => (acc += (cur.CPM / 1000) * cur.Bids), 0).toFixed(3),
+          .reduce((acc, cur) => (acc += (cur.CPM.replace("$", "") / 1000) * cur.Bids), 0).toFixed(3),
         totalRanges: [...new Set(input2.map((el) => el.Range))].length,
         lowestBid: [...new Set(input2.map((el) => el.Range))][0],
         highestBid: [...new Set(input2.map((el) => el.Range))][[...new Set(input2.map((el) => el.Range))].length - 1],
@@ -185,20 +186,20 @@ export const troubleshootData = (data, code) => {
         }`,
         mostRev: `$${Math.max(
           ...[...new Set(input2.map((el) => el.Range))].map((range) => {
-            return input2.filter((el) => el.Range === range && el.Code === 1).reduce((acc, cur) => (acc += (cur.CPM / 1000) * cur.Bids), 0);
+            return input2.filter((el) => el.Range === range && el.Code === 1).reduce((acc, cur) => (acc += (cur.CPM.replace("$", "") / 1000) * cur.Bids), 0);
           })
         ).toFixed(3).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} at: ${
           [...new Set(input2.map((el) => el.Range))][
             [...new Set(input2.map((el) => el.Range))]
               .map((range) => {
-                return input2.filter((el) => el.Range === range && el.Code === 1).reduce((acc, cur) => (acc += (cur.CPM / 1000) * cur.Bids), 0);
+                return input2.filter((el) => el.Range === range && el.Code === 1).reduce((acc, cur) => (acc += (cur.CPM.replace("$", "") / 1000) * cur.Bids), 0);
               })
               .indexOf(
                 Math.max(
                   ...[...new Set(input2.map((el) => el.Range))].map((range) => {
                     return input2
                       .filter((el) => el.Range === range && el.Code === 1)
-                      .reduce((acc, cur) => (acc += (cur.CPM / 1000) * cur.Bids), 0);
+                      .reduce((acc, cur) => (acc += (cur.CPM.replace("$", "") / 1000) * cur.Bids), 0);
                   })
                 )
               )
