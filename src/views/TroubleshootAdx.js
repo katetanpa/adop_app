@@ -21,7 +21,7 @@ const TroubleshootAdx = () => {
     const { data, loading, error } = useGoogleSheets({
       apiKey: 'AIzaSyDPU9dCR-MfmwvmlLYsOXCQUlWT-kL4Fow',
       sheetId: '1zBuiVhNyOTyrJibcRPvj3PXcKs-CiocuCPMRGKiEyC4',
-      sheetsOptions: [{ id: 'Bid Range Breakdown', headerRowIndex: 1 }, {id: 'Price Floor Config', headerRowIndex: 0}]
+      sheetsOptions: [{ id: 'Bid Range Breakdown', headerRowIndex: 1 }, {id: 'Ad Unit Config', headerRowIndex: 0}]
     });
     if (loading) {
       return <Loading /> ;

@@ -8,16 +8,20 @@ import CsLineIcons from 'cs-line-icons/CsLineIcons';
 import HtmlHead from 'components/html-head/HtmlHead';
 
 const Login = () => {
-  const title = 'Login';
-  const description = 'Login Page';
-
+  const title = 'Authentication Page';
+  const description = 'Init Ad Op tools by providing Ad Ops Credentials';
+  const redirect = () => {
+    window.location.href = '/home'
+  };
   const validationSchema = Yup.object().shape({
     email: Yup.string().email().required('Email is required'),
-    password: Yup.string().min(6, 'Must be at least 6 chars!').required('Password is required'),
+    sheetID: Yup.string().min(6, 'Provide your Input Sheet ID').required('Sheet ID is required'),
   });
-  const initialValues = { email: '', password: '' };
-  const onSubmit = (values) => console.log('submit form', values);
-
+  const initialValues = { email: 'katetan@premiumads.net', sheetID: '1zBuiVhNyOTyrJibcRPvj3PXcKs-CiocuCPMRGKiEyC4' };
+  const onSubmit = (values) => {
+    console.log('submit form', values);
+    redirect();
+  };
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
   const { handleSubmit, handleChange, values, touched, errors } = formik;
 
@@ -26,12 +30,11 @@ const Login = () => {
       <div className="w-100 w-lg-75 w-xxl-50">
         <div>
           <div className="mb-5">
-            <h1 className="display-3 text-white">Multiple Niches</h1>
-            <h1 className="display-3 text-white">Ready for Your Project</h1>
+            <h1 className="display-3 text-white">Premium Ads</h1>
+            <h1 className="display-3 text-white">Ready for Your Working Day</h1>
           </div>
           <p className="h6 text-white lh-1-5 mb-5">
-            Dynamically target high-payoff intellectual capital for customized technologies. Objectively integrate emerging core competencies before
-            process-centric communities...
+            Understand how the trend of advertising demands for your games/apps are changing, make smarter decisions for future scaling up 
           </p>
           <div className="mb-5">
             <Button size="lg" variant="outline-white" href="/">
@@ -70,11 +73,8 @@ const Login = () => {
             </div>
             <div className="mb-3 filled form-group tooltip-end-top">
               <CsLineIcons icon="lock-off" />
-              <Form.Control type="password" name="password" onChange={handleChange} value={values.password} placeholder="Password" />
-              <NavLink className="text-small position-absolute t-3 e-3" to="/forgot-password">
-                Forgot?
-              </NavLink>
-              {errors.password && touched.password && <div className="d-block invalid-tooltip">{errors.password}</div>}
+              <Form.Control type="text" name="sheetID" onChange={handleChange} value={values.sheetID} placeholder="Sheet ID" />
+              {errors.sheetID && touched.sheetID && <div className="d-block invalid-tooltip">{errors.sheetID}</div>}
             </div>
             <Button size="lg" type="submit">
               Login

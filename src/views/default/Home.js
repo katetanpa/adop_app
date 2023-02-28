@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, Row, Col, Card, Dropdown, Badge } from 'react-bootstrap';
+import { Button, Row, Col, Card, Dropdown, Badge, Form } from 'react-bootstrap';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
 import { NavLink } from 'react-router-dom';
 import HtmlHead from 'components/html-head/HtmlHead';
 import BreadcrumbList from 'components/breadcrumb-list/BreadcrumbList';
@@ -20,6 +22,16 @@ const Home = () => {
     { to: 'ts/adx', text: 'Troubleshoot Ad Units' },
   ];
 
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email().required('Email is required'),
+    password: Yup.string().min(6, 'Must be at least 6 chars!').required('Password is required'),
+  });
+  const initialValues = { email: '', password: '' };
+  const onSubmit = (values) => console.log('submit form', values);
+
+  const formik = useFormik({ initialValues, validationSchema, onSubmit });
+  const { handleSubmit, handleChange, values, touched, errors } = formik;
+
   return (
     <>
       <HtmlHead title={title} description={description} />
@@ -35,7 +47,6 @@ const Home = () => {
         </Row>
       </div>
       {/* Title and Top Buttons End */}
-
       <Row>
         <Col lg="6">
           {/* Stats Start */}
