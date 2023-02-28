@@ -50,7 +50,7 @@ const RevLargeLine = ({dataIn}) => {
           data: dataIn.map((el) => {
             let result = 0;
             if (el.Winner) {
-              result = el.Winner[1].replace('$', "")/1000*el.Winner[0];
+              result = el.Winner[1]/1000*el.Winner[0];
             }
             else result = 0;
             return result;
