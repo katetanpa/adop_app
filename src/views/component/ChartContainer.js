@@ -49,7 +49,7 @@ const ChartContainer = ({data, info, logData}) => {
                   {/* Revenue Line Detail Starts */}
                   <Card className="mb-50 min-vh-100 h-xl-500-card">
                     <Card.Body className="h-400">
-                      <RevLargeLine dataIn={data.revLineData} />
+                      <RevLargeLine dataRev={data.revLineData} />
                     </Card.Body>
                   </Card>
                   {/* Revenue Line Detail End */}

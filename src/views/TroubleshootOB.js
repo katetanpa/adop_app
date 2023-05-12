@@ -13,7 +13,7 @@ import { troubleshootData} from 'views/DataSlice';
 const TroubleshootOB = () => {
     const code = 10;
     const title = 'Troubleshoot Ad Units';
-    const description = 'Troubleshoot Ad Server Performance';
+    const description = 'Troubleshoot Open Bidding Performance';
     const breadcrumbs = [
       { to: '', text: 'View Ad Exchange Performance' },
       { to: 'input', text: 'Input Data' },

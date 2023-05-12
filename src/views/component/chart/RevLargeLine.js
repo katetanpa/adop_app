@@ -5,7 +5,8 @@ import zoomPlugin from 'chartjs-plugin-zoom';
 import { useSelector } from 'react-redux';
 import { max } from 'date-fns';
 
-const RevLargeLine = ({dataIn}) => {
+const RevLargeLine = ({dataRev}) => {
+  const dataIn = dataRev.filter((el) => el.Winner && (el.Winner[1]/1000*el.Winner[0]) >= 3);
   const { themeValues } = useSelector((state) => state.settings);
   const chartContainer = useRef(null);
   /*-------------*/

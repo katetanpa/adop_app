@@ -24,13 +24,11 @@ const routesAndMenuItems = {
     {
       path: `${appRoot}/ts/adx`,
       component: TroubleshootAdx,
-      label: 'UPR Card | ADX',
+      label: 'UPR Card',
       icon: 'grid-2',
     },
     {
       path: `${appRoot}/ts/ob`,
-      label: 'UPR Card | AD Server',
-      icon: 'grid-3',
       component: TroubleshootOb,
     }
   ],
