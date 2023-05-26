@@ -1,5 +1,5 @@
 import { DEFAULT_PATHS } from 'config.js';
-import TroubleshootAdx from 'views/TroubleshootAdx';
+import UPRCard from 'views/UPRCard';
 import Home from 'views/default/Home';
 
 const appRoot = DEFAULT_PATHS.APP.endsWith('/') ? DEFAULT_PATHS.APP.slice(1, DEFAULT_PATHS.APP.length) : DEFAULT_PATHS.APP;
@@ -19,8 +19,8 @@ const routesAndMenuItems = {
       component: Home,
     },
     {
-      path: `${appRoot}/ts/adx`,
-      component: TroubleshootAdx,
+      path: `${appRoot}/upr-card`,
+      component: UPRCard,
       label: 'UPR Card',
       icon: 'grid-2',
     }

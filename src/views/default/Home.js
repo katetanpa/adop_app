@@ -1,12 +1,11 @@
 import React from 'react';
-import { Button, Row, Col, Card, Dropdown, Badge, Form } from 'react-bootstrap';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
+import { Button, Row, Col, Card, Dropdown, Badge } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import HtmlHead from 'components/html-head/HtmlHead';
 import BreadcrumbList from 'components/breadcrumb-list/BreadcrumbList';
 import CsLineIcons from 'cs-line-icons/CsLineIcons';
-import ChartCustomHorizontalTooltip from '../component/chart/ChartCustomHorizontalTooltip';
+import PerformanceLine from 'views/component/chart/PerformanceLine';
+import CtrLine from 'views/component/chart/CtrLine';
 import ChartSmallLine1 from '../component/chart/ChartSmallLine1';
 import ChartSmallLine2 from '../component/chart/ChartSmallLine2';
 import ChartSmallLine3 from '../component/chart/ChartSmallLine3';
@@ -14,24 +13,12 @@ import ChartSmallLine4 from '../component/chart/ChartSmallLine4';
 import ChartPie from '../component/chart/ChartPie';
 
 const Home = () => {
-  const title = 'Daily Monitoring Dashboard';
-  const description = 'Daily Monitoring Performance Of A Specific Publisher | Report Visualization';
-
+  const title = 'App Monitoring Dashboard';
+  const description = 'Monitoring Performance Of A Specific App | Report Visualization';
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: 'ts/adx', text: 'Troubleshoot Ad Units' },
+    { to: 'upr-card', text: 'Troubleshoot Ad Units' },
   ];
-
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().email().required('Email is required'),
-    password: Yup.string().min(6, 'Must be at least 6 chars!').required('Password is required'),
-  });
-  const initialValues = { email: '', password: '' };
-  const onSubmit = (values) => console.log('submit form', values);
-
-  const formik = useFormik({ initialValues, validationSchema, onSubmit });
-  const { handleSubmit, handleChange, values, touched, errors } = formik;
-
   return (
     <>
       <HtmlHead title={title} description={description} />
@@ -53,15 +40,10 @@ const Home = () => {
           <div className="d-flex">
             <Dropdown>
               <Dropdown.Toggle className="small-title p-0 align-top h-auto me-2" variant="link">
-                Today's
+                Date Range
               </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item>Weekly</Dropdown.Item>
-                <Dropdown.Item>Monthly</Dropdown.Item>
-                <Dropdown.Item>Yearly</Dropdown.Item>
-              </Dropdown.Menu>
             </Dropdown>
-            <h2 className="small-title">Stats</h2>
+            <h2 className="small-title">App ID</h2>
           </div>
           <div className="mb-5">
             <Row className="g-2">
@@ -77,7 +59,7 @@ const Home = () => {
                       <Col>
                         <Row className="gx-2 d-flex align-content-center">
                           <Col xs="12" className="col-12 d-flex">
-                            <div className="d-flex align-items-center lh-1-25">Shipped Orders</div>
+                            <div className="d-flex align-items-center lh-1-25">Total Revenue</div>
                           </Col>
                           <Col xl="auto" className="col-12">
                             <div className="cta-2 text-primary">22</div>
@@ -100,7 +82,7 @@ const Home = () => {
                       <Col>
                         <Row className="gx-2 d-flex align-content-center">
                           <Col xs="12" className="col-12 d-flex">
-                            <div className="d-flex align-items-center lh-1-25">Delivered Orders</div>
+                            <div className="d-flex align-items-center lh-1-25">Total Fillrate</div>
                           </Col>
                           <Col xl="auto" className="col-12">
                             <div className="cta-2 text-primary">35</div>
@@ -123,7 +105,7 @@ const Home = () => {
                       <Col>
                         <Row className="gx-2 d-flex align-content-center">
                           <Col xs="12" className="col-12 d-flex">
-                            <div className="d-flex align-items-center lh-1-25">Pending Orders</div>
+                            <div className="d-flex align-items-center lh-1-25">Total eCPM</div>
                           </Col>
                           <Col xl="auto" className="col-12">
                             <div className="cta-2 text-primary">22</div>
@@ -146,7 +128,7 @@ const Home = () => {
                       <Col>
                         <Row className="gx-2 d-flex align-content-center">
                           <Col xs="12" className="col-12 d-flex">
-                            <div className="d-flex align-items-center lh-1-25">Unconfirmed Orders</div>
+                            <div className="d-flex align-items-center lh-1-25">Top GEOs</div>
                           </Col>
                           <Col xl="auto" className="col-12">
                             <div className="cta-2 text-primary">3</div>
@@ -161,21 +143,21 @@ const Home = () => {
           </div>
           {/* Stats End */}
 
-          {/* Sales Start */}
-          <h2 className="small-title">Sales</h2>
+          {/* CTR Start */}
+          <h2 className="small-title">CTR by Days</h2>
           <Card className="mb-5 sh-40">
             <Card.Body>
-              <ChartCustomHorizontalTooltip />
+              <CtrLine />
             </Card.Body>
           </Card>
-          {/* Sales End */}
+          {/* CTR End */}
         </Col>
 
         <Col lg="6" className="mb-5">
           <div className="d-flex justify-content-between">
-            <h2 className="small-title">Stocks</h2>
+            <h2 className="small-title">Highest & Lowest Zones</h2>
             <Button variant="background-alternate" size="xs" className="btn-icon btn-icon-end p-0 text-small">
-              <span className="align-bottom">View More</span> <CsLineIcons icon="chevron-right" className="align-middle" size="12" />
+              <span className="align-bottom">View Zone Details</span> <CsLineIcons icon="chevron-right" className="align-middle" size="12" />
             </Button>
           </div>
           <div className="mb-n2">
@@ -427,6 +409,13 @@ const Home = () => {
         </Col>
         {/* Coins End */}
       </Row>
+
+      <h2 className="small-title mt-5">eCPM & Fill-rate by Days</h2>
+      <Card className="mb-5 sh-40">
+        <Card.Body>
+          <PerformanceLine />
+        </Card.Body>
+      </Card>
     </>
   );
 };
