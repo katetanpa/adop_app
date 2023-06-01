@@ -14,7 +14,7 @@ const routesAndMenuItems = {
     },
     {
       path: `${appRoot}/home`,
-      label: 'Daily Monitoring | Home',
+      label: 'App Monitoring',
       icon: 'home',
       component: Home,
     },

@@ -6,10 +6,10 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import AverageCpmLine from 'views/component/chart/AverageCpmLine';
 import BidChart from './chart/BidChart';
 import RevLargeLine from './chart/RevLargeLine';
-import PieStat1 from './chart/PieStat1';
-import PieStat2 from './chart/PieStat2';
-import PieStat3 from './chart/PieStat3';
-import PieStat4 from './chart/PieStat4';
+import BidsPieStat1 from './chart/BidsPieStat1';
+import BidsPieStat2 from './chart/BidsPieStat2';
+import BidsPieStat3 from './chart/BidsPieStat3';
+import BidsPieStat4 from './chart/BidsPieStat4';
 
 const ChartContainer = ({data, info, logData}) => {
     return (
@@ -308,28 +308,28 @@ const ChartContainer = ({data, info, logData}) => {
                   <Col md="6">
                     <Card className="sh-13">
                       <Card.Body className="py-0 d-flex align-items-center">
-                        <PieStat1 data={logData.pieData1} />
+                        <BidsPieStat1 data={logData.pieData1} />
                       </Card.Body>
                     </Card>
                   </Col>
                   <Col md="6">
                     <Card className="sh-13">
                       <Card.Body className="py-0 d-flex align-items-center">
-                        <PieStat2 data={logData.pieData2} />
+                        <BidsPieStat2 data={logData.pieData2} />
                       </Card.Body>
                     </Card>
                   </Col>
                   <Col md="6">
                     <Card className="sh-13">
                       <Card.Body className="py-0 d-flex align-items-center">
-                        <PieStat3 data={logData.pieData3} />
+                        <BidsPieStat3 data={logData.pieData3} />
                       </Card.Body>
                     </Card>
                   </Col>
                   <Col md="6">
                     <Card className="sh-13">
                       <Card.Body className="py-0 d-flex align-items-center">
-                        <PieStat4 data={logData.pieData4} />
+                        <BidsPieStat4 data={logData.pieData4} />
                       </Card.Body>
                     </Card>
                   </Col>

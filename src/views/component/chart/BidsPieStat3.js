@@ -6,7 +6,7 @@ import { Chart, registerables } from 'chart.js';
 import { useSelector } from 'react-redux';
 import { Col, Row } from 'react-bootstrap';
 
-const PieStat5 = (props) => {
+const BidsPieStat5 = (props) => {
   const { themeValues } = useSelector((state) => state.settings);
   const chartContainer = useRef(null);
   const legendRef = useRef(null);
@@ -94,7 +94,7 @@ const PieStat5 = (props) => {
         },
       ],
     };
-  }, [themeValues]);
+  }, [themeValues, props.data]);
   const config = React.useMemo(() => {
     return {
       type: 'doughnut',
@@ -144,4 +144,4 @@ const PieStat5 = (props) => {
   );
 };
 
-export default React.memo(PieStat5);
+export default React.memo(BidsPieStat5);

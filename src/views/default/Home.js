@@ -6,11 +6,8 @@ import BreadcrumbList from 'components/breadcrumb-list/BreadcrumbList';
 import CsLineIcons from 'cs-line-icons/CsLineIcons';
 import PerformanceLine from 'views/component/chart/PerformanceLine';
 import CtrLine from 'views/component/chart/CtrLine';
-import ChartSmallLine1 from '../component/chart/ChartSmallLine1';
-import ChartSmallLine2 from '../component/chart/ChartSmallLine2';
-import ChartSmallLine3 from '../component/chart/ChartSmallLine3';
-import ChartSmallLine4 from '../component/chart/ChartSmallLine4';
-import ChartPie from '../component/chart/ChartPie';
+import BidsAndRequestsBar from 'views/component/chart/BidsAndRequestsBar';
+import GeoLine from 'views/component/chart/GeoLine';
 
 const Home = () => {
   const title = 'App Monitoring Dashboard';
@@ -35,6 +32,9 @@ const Home = () => {
       </div>
       {/* Title and Top Buttons End */}
       <Row>
+
+
+
         <Col lg="6">
           {/* Stats Start */}
           <div className="d-flex">
@@ -153,6 +153,7 @@ const Home = () => {
           {/* CTR End */}
         </Col>
 
+        {/* Top & Worst Zones Start */}
         <Col lg="6" className="mb-5">
           <div className="d-flex justify-content-between">
             <h2 className="small-title">Highest & Lowest Zones</h2>
@@ -166,135 +167,20 @@ const Home = () => {
                 <Row className="g-0 h-100 align-content-center">
                   <Col className="d-flex align-items-center mb-2 mb-md-0 mw">
                     <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
-                      Barmbrack
-                    </NavLink>
-                  </Col>
-                  <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
-                    <Badge bg="outline-tertiary" className="me-1">
-                      STOCK
-                    </Badge>
-                  </Col>
-                  <Col className="d-flex align-items-center text-medium text-danger justify-content-center">
-                    <CsLineIcons icon="arrow-bottom" className="me-1" size="14" />
-                    <span className="text-medium">-18.4%</span>
-                  </Col>
-                  <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
-                    <span>$ 3.25</span>
-                  </Col>
-                </Row>
-              </Card.Body>
-            </Card>
-            <Card className="mb-2 sh-10 sh-md-8">
-              <Card.Body className="pt-0 pb-0 h-100">
-                <Row className="g-0 h-100 align-content-center">
-                  <Col className="d-flex align-items-center mb-2 mb-md-0">
-                    <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
-                      Cheesymite Scroll
-                    </NavLink>
-                  </Col>
-                  <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
-                    <Badge bg="outline-tertiary" className="me-1">
-                      STOCK
-                    </Badge>
-                  </Col>
-                  <Col className="d-flex align-items-center text-medium text-danger justify-content-center">
-                    <CsLineIcons icon="arrow-bottom" className="me-1" size="14" />
-                    <span className="text-medium">-13.4%</span>
-                  </Col>
-                  <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
-                    <span>$ 4.50</span>
-                  </Col>
-                </Row>
-              </Card.Body>
-            </Card>
-            <Card className="mb-2 sh-10 sh-md-8">
-              <Card.Body className="pt-0 pb-0 h-100">
-                <Row className="g-0 h-100 align-content-center">
-                  <Col className="d-flex align-items-center mb-2 mb-md-0">
-                    <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
-                      Cholermüs
-                    </NavLink>
-                  </Col>
-                  <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
-                    <Badge bg="outline-primary" className="me-1">
-                      SALE
-                    </Badge>
-                  </Col>
-                  <Col className="d-flex align-items-center text-medium text-success justify-content-center">
-                    <CsLineIcons icon="arrow-top" className="me-1" size="14" />
-                    <span className="text-medium">+9.7%</span>
-                  </Col>
-                  <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
-                    <span>$ 1.75</span>
-                  </Col>
-                </Row>
-              </Card.Body>
-            </Card>
-            <Card className="mb-2 sh-10 sh-md-8">
-              <Card.Body className="pt-0 pb-0 h-100">
-                <Row className="g-0 h-100 align-content-center">
-                  <Col className="d-flex align-items-center mb-2 mb-md-0">
-                    <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
-                      Ruisreikäleipä
-                    </NavLink>
-                  </Col>
-                  <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
-                    <Badge bg="outline-primary" className="me-1">
-                      SALE
-                    </Badge>
-                  </Col>
-                  <Col className="d-flex align-items-center text-medium text-success justify-content-center">
-                    <CsLineIcons icon="arrow-bottom" className="me-1" size="14" />
-                    <span className="text-medium">+5.3%</span>
-                  </Col>
-                  <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
-                    <span>$ 3.00</span>
-                  </Col>
-                </Row>
-              </Card.Body>
-            </Card>
-            <Card className="mb-2 sh-10 sh-md-8">
-              <Card.Body className="pt-0 pb-0 h-100">
-                <Row className="g-0 h-100 align-content-center">
-                  <Col className="d-flex align-items-center mb-2 mb-md-0">
-                    <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
-                      Bagel
-                    </NavLink>
-                  </Col>
-                  <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
-                    <Badge bg="outline-tertiary" className="me-1">
-                      STOCK
-                    </Badge>
-                  </Col>
-                  <Col className="d-flex align-items-center text-medium text-danger justify-content-center">
-                    <CsLineIcons icon="arrow-bottom" className="me-1" size="14" />
-                    <span className="text-medium">-2.3%</span>
-                  </Col>
-                  <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
-                    <span>$ 4.25</span>
-                  </Col>
-                </Row>
-              </Card.Body>
-            </Card>
-            <Card className="mb-2 sh-10 sh-md-8">
-              <Card.Body className="pt-0 pb-0 h-100">
-                <Row className="g-0 h-100 align-content-center">
-                  <Col className="d-flex align-items-center mb-2 mb-md-0">
-                    <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
-                      Buccellato di Lucca
+                      INT_0.85
                     </NavLink>
                   </Col>
                   <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
                     <Badge bg="outline-secondary" className="me-1">
-                      TREND
+                      Interstitial
                     </Badge>
                   </Col>
                   <Col className="d-flex align-items-center text-medium text-danger justify-content-center">
                     <CsLineIcons icon="arrow-bottom" className="me-1" size="14" />
-                    <span className="text-medium">-5.3%</span>
+                    <span className="text-medium">0.00%</span>
                   </Col>
                   <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
-                    <span>$ 3.75</span>
+                    <span>$ 0.00</span>
                   </Col>
                 </Row>
               </Card.Body>
@@ -304,20 +190,20 @@ const Home = () => {
                 <Row className="g-0 h-100 align-content-center">
                   <Col className="d-flex align-items-center mb-2 mb-md-0">
                     <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
-                      Chapati
+                    INT_2.85
                     </NavLink>
                   </Col>
                   <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
-                    <Badge bg="outline-primary" className="me-1">
-                      SALE
+                    <Badge bg="outline-secondary"  className="me-1">
+                    Interstitial
                     </Badge>
                   </Col>
-                  <Col className="d-flex align-items-center text-medium text-success justify-content-center">
+                  <Col className="d-flex align-items-center text-medium text-danger justify-content-center">
                     <CsLineIcons icon="arrow-bottom" className="me-1" size="14" />
-                    <span className="text-medium">+7.1%</span>
+                    <span className="text-medium">0.00%</span>
                   </Col>
                   <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
-                    <span>$ 1.85</span>
+                    <span>$ 0.00</span>
                   </Col>
                 </Row>
               </Card.Body>
@@ -327,87 +213,209 @@ const Home = () => {
                 <Row className="g-0 h-100 align-content-center">
                   <Col className="d-flex align-items-center mb-2 mb-md-0">
                     <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
-                      Pullman Loaf
+                    INT_3.85
                     </NavLink>
                   </Col>
                   <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
-                    <Badge bg="outline-primary" className="me-1">
-                      TREND
+                    <Badge bg="outline-secondary"  className="me-1">
+                    Interstitial
+                    </Badge>
+                  </Col>
+                  <Col className="d-flex align-items-center text-medium text-danger justify-content-center">
+                    <CsLineIcons icon="arrow-bottom" className="me-1" size="14" />
+                    <span className="text-medium">0.00%</span>
+                  </Col>
+                  <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
+                    <span>$ 0.00</span>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+            <Card className="mb-2 sh-10 sh-md-8">
+              <Card.Body className="pt-0 pb-0 h-100">
+                <Row className="g-0 h-100 align-content-center">
+                  <Col className="d-flex align-items-center mb-2 mb-md-0">
+                    <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
+                    INT_4.85
+                    </NavLink>
+                  </Col>
+                  <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
+                    <Badge bg="outline-secondary"  className="me-1">
+                    Interstitial
+                    </Badge>
+                  </Col>
+                  <Col className="d-flex align-items-center text-medium text-danger justify-content-center">
+                    <CsLineIcons icon="arrow-bottom" className="me-1" size="14" />
+                    <span className="text-medium">0.00%</span>
+                  </Col>
+                  <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
+                    <span>$ 0.00</span>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+            <Card className="mb-2 sh-10 sh-md-8">
+              <Card.Body className="pt-0 pb-0 h-100">
+                <Row className="g-0 h-100 align-content-center">
+                  <Col className="d-flex align-items-center mb-2 mb-md-0">
+                    <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
+                    Splash_DT_INT_47.85
+                    </NavLink>
+                  </Col>
+                  <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
+                    <Badge bg="outline-secondary"  className="me-1">
+                    Interstitial
                     </Badge>
                   </Col>
                   <Col className="d-flex align-items-center text-medium text-success justify-content-center">
-                    <CsLineIcons icon="arrow-bottom" className="me-1" size="14" />
-                    <span className="text-medium">+2.3%</span>
+                    <CsLineIcons icon="arrow-top" className="me-1" size="14" />
+                    <span className="text-medium">1.62%</span>
                   </Col>
                   <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
-                    <span>$ 2.25</span>
+                    <span>$ 2,160.37</span>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+            <Card className="mb-2 sh-10 sh-md-8">
+              <Card.Body className="pt-0 pb-0 h-100">
+                <Row className="g-0 h-100 align-content-center">
+                  <Col className="d-flex align-items-center mb-2 mb-md-0">
+                    <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
+                    Splash_DT_INT_117.12
+                    </NavLink>
+                  </Col>
+                  <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
+                    <Badge bg="outline-secondary"  className="me-1">
+                    Interstitial
+                    </Badge>
+                  </Col>
+                  <Col className="d-flex align-items-center text-medium text-success justify-content-center">
+                    <CsLineIcons icon="arrow-top" className="me-1" size="14" />
+                    <span className="text-medium">0.18%</span>
+                  </Col>
+                  <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
+                    <span>$ 1,231.02</span>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+            <Card className="mb-2 sh-10 sh-md-8">
+              <Card.Body className="pt-0 pb-0 h-100">
+                <Row className="g-0 h-100 align-content-center">
+                  <Col className="d-flex align-items-center mb-2 mb-md-0">
+                    <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
+                    Splash_DT_INT_80.85
+                    </NavLink>
+                  </Col>
+                  <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
+                    <Badge bg="outline-secondary"  className="me-1">
+                    Interstitial
+                    </Badge>
+                  </Col>
+                  <Col className="d-flex align-items-center text-medium text-success justify-content-center">
+                    <CsLineIcons icon="arrow-top" className="me-1" size="14" />
+                    <span className="text-medium">0.25%</span>
+                  </Col>
+                  <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
+                    <span>$ 1,011.62</span>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+            <Card className="mb-2 sh-10 sh-md-8">
+              <Card.Body className="pt-0 pb-0 h-100">
+                <Row className="g-0 h-100 align-content-center">
+                  <Col className="d-flex align-items-center mb-2 mb-md-0">
+                    <NavLink to="/pages/portfolio/detail" className="body-link text-truncate">
+                    DT_INT_117.12
+                    </NavLink>
+                  </Col>
+                  <Col className="d-flex align-items-center text-muted text-medium mb-1 mb-md-0">
+                    <Badge bg="outline-secondary" className="me-1">
+                    Interstitial
+                    </Badge>
+                  </Col>
+                  <Col className="d-flex align-items-center text-medium text-success justify-content-center">
+                    <CsLineIcons icon="arrow-top" className="me-1" size="14" />
+                    <span className="text-medium">1.09%</span>
+                  </Col>
+                  <Col className="d-flex align-items-center justify-content-end text-muted text-medium">
+                    <span>$ 984.18</span>
                   </Col>
                 </Row>
               </Card.Body>
             </Card>
           </div>
         </Col>
+        {/* Top & Worst Zones End */}
       </Row>
 
       <Row className="gy-5">
-        {/* Consumptions Start */}
+        {/* Requests & Bids Start */}
         <Col xl="6">
           <div className="d-flex">
-            <Dropdown>
-              <Dropdown.Toggle className="small-title p-0 align-top h-auto me-2" variant="link">
-                Today's
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item>Weekly</Dropdown.Item>
-                <Dropdown.Item>Monthly</Dropdown.Item>
-                <Dropdown.Item>Yearly</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <h2 className="small-title">Stats</h2>
+            <h2 className="small-title">Requests & Bids</h2>
           </div>
           <Card className="sh-50 h-xl-100-card">
             <Card.Body className="h-100">
-              <ChartPie />
+              <BidsAndRequestsBar />
             </Card.Body>
           </Card>
         </Col>
-        {/* Consumptions End */}
+        {/* Requests & Bids End */}
 
-        {/* Coins Start */}
+        {/* GEO Start */}
         <Col xl="6">
-          <h2 className="small-title">Coins</h2>
+          <h2 className="small-title">Traffic Quality</h2>
           <Row className="g-2">
             <Col md="6" xl="12">
               <Card className="sh-13">
                 <Card.Body className="py-0 d-flex align-items-center">
-                  <ChartSmallLine1 />
+                  <GeoLine data={{
+                    labels: ['April 1', 'April 2', 'April 3', 'April 4', 'April 5', 'April 6', 'April 7'],
+                    country: 'United States',
+                    requests: [13092692, 13621577, 14473952, 14546858, 16501686, 14270515, 14659047]
+                  }}/>
                 </Card.Body>
               </Card>
             </Col>
             <Col md="6" xl="12">
               <Card className="sh-13">
                 <Card.Body className="py-0 d-flex align-items-center">
-                  <ChartSmallLine2 />
+                  <GeoLine data={{
+                    labels: ['April 1', 'April 2', 'April 3', 'April 4', 'April 5', 'April 6', 'April 7'],
+                    country: 'United States',
+                    requests: [13092692, 13621577, 14473952, 14546858, 16501686, 14270515, 14659047]
+                  }}/>
                 </Card.Body>
               </Card>
             </Col>
             <Col md="6" xl="12">
               <Card className="sh-13">
                 <Card.Body className="py-0 d-flex align-items-center">
-                  <ChartSmallLine3 />
+                  <GeoLine data={{
+                    labels: ['April 1', 'April 2', 'April 3', 'April 4', 'April 5', 'April 6', 'April 7'],
+                    country: 'United States',
+                    requests: [13092692, 13621577, 14473952, 14546858, 16501686, 14270515, 14659047]
+                  }}/>
                 </Card.Body>
               </Card>
             </Col>
             <Col md="6" xl="12">
               <Card className="sh-13">
                 <Card.Body className="py-0 d-flex align-items-center">
-                  <ChartSmallLine4 />
+                  <GeoLine data={{
+                    labels: ['April 1', 'April 2', 'April 3', 'April 4', 'April 5', 'April 6', 'April 7'],
+                    country: 'United States',
+                    requests: [13092692, 13621577, 14473952, 14546858, 16501686, 14270515, 14659047]
+                  }}/>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
         </Col>
-        {/* Coins End */}
+        {/* GEO End */}
       </Row>
 
       <h2 className="small-title mt-5">eCPM & Fill-rate by Days</h2>

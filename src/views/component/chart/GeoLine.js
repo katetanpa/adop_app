@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import ReactDOM from 'react-dom';
 import CsLineIcons from 'cs-line-icons/CsLineIcons';
 
-const ChartSmallLine4 = () => {
+const GeoLine = (props) => {
   const { themeValues } = useSelector((state) => state.settings);
   const chartContainer = useRef(null);
   const tooltipRef = useRef(null);
@@ -75,12 +75,12 @@ const ChartSmallLine4 = () => {
 
   const data = React.useMemo(() => {
     return {
-      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      labels: props.data.labels,
       datasets: [
         {
-          label: 'XRP / USD',
-          data: [0.25, 0.253, 0.268, 0.243, 0.243],
-          icons: ['chevron-top', 'chevron-top', 'chevron-top', 'chevron-bottom', 'circle'],
+          label:  props.data.country + ' / Requests',
+          data: props.data.requests,
+          icons: ['chevron-bottom', 'chevron-top', 'chevron-top', 'chevron-top', 'chevron-bottom', 'chevron-bottom', 'chevron-bottom'],
           borderColor: themeValues.primary,
           pointBackgroundColor: themeValues.primary,
           pointBorderColor: themeValues.primary,
@@ -96,7 +96,7 @@ const ChartSmallLine4 = () => {
         },
       ],
     };
-  }, [themeValues]);
+  }, [themeValues, props.data.country, props.data.labels, props.data.requests]);
   const config = React.useMemo(() => {
     return {
       type: 'line',
@@ -175,4 +175,4 @@ const ChartSmallLine4 = () => {
   );
 };
 
-export default React.memo(ChartSmallLine4);
+export default React.memo(GeoLine);
